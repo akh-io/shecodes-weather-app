@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Forecast</title>
+  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/6b34c1f343.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <form>
+      <div class="row justify-content-center">
+        <div class="col-6">
+          <input id="search-city" type="text" class="form-control" placeholder="Search a city" />
+        </div>
+        <div class="col-2">
+          <button type="submit" class="btn btn-primary" id="submit-button">
+            Search
+          </button>
+        </div>
+      </div>
+    </form>
+    <h1 id="city-name">Berlin</h1>
+    <h2 id="current-time"></h2>
+    <section>
+      <div class="row justify-content-center">
+        <div class="col-sm-6" style="max-width: 26rem">
+          <div class="card text-center">
+            <div class="card-body">
+              <h3 class="title">
+                <span id="temperature">
+                  18
+                </span>
+                <span id="measurement">
+                  <a href="#" id="temperature-celcius">°C</a>
+                  /
+                  <a href="#" id="temperature-fahrenheit">°F</a>
+                </span>
+                </br>
+                Cool
+              </h3>
+              <p>
+                <i class="fas fa-cloud-sun" id="weather-icon"></i>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6" style="max-width: 26rem">
+          <div class="card text-center">
+            <div class="card-body">
+              <ul class="weather-description">
+                <li id="min-temperature">Lowest 20°</li>
+                <li id=max-temperature> Highest 15°
+                </li>
+                <li id="humidity">Humidity 20%</li>
+                <li id="feels-like">Feels like 17°</li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+     
+    <div class="space"></div>
+    <div class="row justify-content-center">
+      <div class="col-sm-2" style="max-width: 10rem">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="week">Tomorrow</h5>
+            <p class="card-text">
+              <i class="fas fa-cloud-sun"></i>
+              <br />
+              20°/12°
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2" style="max-width: 10rem">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="week">Monday</h5>
+            <p class="card-text">
+              <i class="fas fa-cloud-sun"></i>
+              <br />
+              20°/12°
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2" style="max-width: 10rem">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="week">Tuesday</h5>
+            <p class="card-text">
+              <i class="fas fa-cloud-sun"></i>
+              <br />
+              20°/12°
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2" style="max-width: 10rem">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="week">Thursday</h5>
+            <p class="card-text">
+              <i class="fas fa-cloud-sun"></i>
+              <br />
+              20°/12°
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2" style="max-width: 10rem">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="week">Friday</h5>
+            <p class="card-text">
+              <i class="fas fa-cloud-sun"></i>
+              <br />
+              20°/12°
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="src/index.js"></script>
+</body>
+<p id="footer">
+  <a href="">Open source</a> coded by Akiho Hamamoto
+</p>
+</html>
