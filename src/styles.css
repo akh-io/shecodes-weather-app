@@ -1,0 +1,46 @@
+form .row {
+  margin: 50px;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+section .card {
+  height: 350px;
+  margin-top: 30px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 20px;
+  line-height: 3em;
+}
+
+#measurement {
+  font-size: 20px;
+}
+
+#weather-icon {
+  font-size: 150px;
+}
+
+.title {
+  font-size: 38px;
+  margin-bottom: 50px;
+}
+.week {
+  font-size: 18px;
+}
+
+.card-text {
+  font-size: 16px;
+}
+
+#footer {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
