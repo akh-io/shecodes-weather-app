@@ -1,10 +1,8 @@
 function displayTemperature(response) {
 let temperatureElement = document.querySelector("temperature");
 let cityElement = document.querySelector("#city-name")
-let descriptionElement = document.querySelector("#condition")
 temperatureElement.innerHTML = Math.round(response.data.main.temp)
-cityElement.innerHTML = respnse.data.name; 
-descriptionElement.innerHTML = responase.data.weather[0].description;
+cityElement.innerHTML = response.data.name; 
 }
 let apiKey = `cbbbf47964f1e326cc360a17986bc388`;
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${apiKey}&units=metric`;
@@ -47,6 +45,8 @@ function showFahrenheitTemp(event) {
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
+  let description = response.data.weather[0].description;
+  let descriptionElement = document.querySelector("#condition")
   let minTemp = Math.round(response.data.main.temp_min);
   let minTempElement = document.querySelector("#min-temperature");
   let maxTemp = Math.round(response.data.main.temp_max);
@@ -55,14 +55,17 @@ function showTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let feelTemp = Math.round(response.data.main.feels_like);
   let feelTempElement = document.querySelector("#feels-like");
+  let iconElelment = document.querySelector("#icon")
   let celciusTemp = document.querySelector("#temperature");
   let fahrenheitTemp = document.querySelector("#temperature-fahrenheit");
 
   temperatureElement.innerHTML = temperature;
+  descriptionElement.innerHTML = `${description}`;
   minTempElement.innerHTML = `Lowest: ${minTemp}°C`;
   maxTempElement.innerHTML = `Highest: ${maxTemp}°C`;
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
   feelTempElement.innerHTML = `Feels like: ${feelTemp}°C`;
+  iconElelment.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`) 
 
   celciusTemp.addEventListener("click", showCelciusTemp);
   fahrenheitTemp.addEventListener("click", showFahrenheitTemp);
