@@ -1,3 +1,17 @@
+function displayTemperature(response) {
+let temperatureElement = document.querySelector("temperature");
+let cityElement = document.querySelector("#city-name")
+let descriptionElement = document.querySelector("#condition")
+temperatureElement.innerHTML = Math.round(response.data.main.temp)
+cityElement.innerHTML = respnse.data.name; 
+descriptionElement.innerHTML = responase.data.weather[0].description;
+}
+let apiKey = `cbbbf47964f1e326cc360a17986bc388`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${apiKey}&units=metric`;
+
+axios.get(apiUrl).then(showTemperature);
+
+
 function currentDate(date) {
   let days = [
     "Sunday",
@@ -45,10 +59,10 @@ function showTemperature(response) {
   let fahrenheitTemp = document.querySelector("#temperature-fahrenheit");
 
   temperatureElement.innerHTML = temperature;
-  minTempElement.innerHTML = `Lowest ${minTemp}°`;
-  maxTempElement.innerHTML = `Highest ${maxTemp}°`;
-  humidityElement.innerHTML = `Humidity ${humidity}%`;
-  feelTempElement.innerHTML = `Feels like ${feelTemp}°`;
+  minTempElement.innerHTML = `Lowest: ${minTemp}°C`;
+  maxTempElement.innerHTML = `Highest: ${maxTemp}°C`;
+  humidityElement.innerHTML = `Humidity: ${humidity}%`;
+  feelTempElement.innerHTML = `Feels like: ${feelTemp}°C`;
 
   celciusTemp.addEventListener("click", showCelciusTemp);
   fahrenheitTemp.addEventListener("click", showFahrenheitTemp);
