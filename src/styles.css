@@ -25,6 +25,10 @@ ul {
 }
 
 #condition {
+  font-size: 30px;
+}
+
+#condition {
   text-transform: capitalize;
 }
 

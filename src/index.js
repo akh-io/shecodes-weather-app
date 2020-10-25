@@ -46,7 +46,7 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temperature");
   let description = response.data.weather[0].description;
-  let descriptionElement = document.querySelector("#condition")
+  let descriptionElement = document.querySelector("#condition");
   let minTemp = Math.round(response.data.main.temp_min);
   let minTempElement = document.querySelector("#min-temperature");
   let maxTemp = Math.round(response.data.main.temp_max);
@@ -55,7 +55,7 @@ function showTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let feelTemp = Math.round(response.data.main.feels_like);
   let feelTempElement = document.querySelector("#feels-like");
-  let iconElelment = document.querySelector("#icon")
+  let iconElelment = document.querySelector("#icon");
   let celciusTemp = document.querySelector("#temperature");
   let fahrenheitTemp = document.querySelector("#temperature-fahrenheit");
 
@@ -66,6 +66,7 @@ function showTemperature(response) {
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
   feelTempElement.innerHTML = `Feels like: ${feelTemp}°C`;
   iconElelment.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`) 
+  iconElelment.setAttribute("alt", response.data.weather[0].description)
 
   celciusTemp.addEventListener("click", showCelciusTemp);
   fahrenheitTemp.addEventListener("click", showFahrenheitTemp);
