@@ -4,11 +4,11 @@ let cityElement = document.querySelector("#city-name")
 temperatureElement.innerHTML = Math.round(response.data.main.temp)
 cityElement.innerHTML = response.data.name; 
 }
+
 let apiKey = `cbbbf47964f1e326cc360a17986bc388`;
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(showTemperature);
-
 
 function currentDate(date) {
   let days = [
@@ -47,23 +47,29 @@ function currentDate(date) {
   return `${day}, ${hour}:${minutes}`;
 }
 
-function showCelciusTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = temperature;
-}
 
 function showFahrenheitTemp(event) {
   event.preventDefault();
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  celciusLink.classList.remove("active")
+  fahrenheitLink.classList.add("active")
   let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperature = Number(temperature);
-  temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function showCelciusTemp(event) {
+  event.preventDefault();
+  celciusLink.classList.add("active")
+  fahrenheitLink.classList.remove("active")
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+
 }
 
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+  let temperature = Math.round(celsiusTemperature);
   let temperatureElement = document.querySelector("#temperature");
   let description = response.data.weather[0].description;
   let descriptionElement = document.querySelector("#condition");
@@ -76,9 +82,8 @@ function showTemperature(response) {
   let feelTemp = Math.round(response.data.main.feels_like);
   let feelTempElement = document.querySelector("#feels-like");
   let iconElelment = document.querySelector("#icon");
-  let celciusTemp = document.querySelector("#temperature");
-  let fahrenheitTemp = document.querySelector("#temperature-fahrenheit");
-
+  
+ 
   temperatureElement.innerHTML = temperature;
   descriptionElement.innerHTML = `${description}`;
   minTempElement.innerHTML = `Lowest: ${minTemp}°C`;
@@ -87,10 +92,16 @@ function showTemperature(response) {
   feelTempElement.innerHTML = `Feels like: ${feelTemp}°C`;
   iconElelment.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`) 
   iconElelment.setAttribute("alt", response.data.weather[0].description)
-
-  celciusTemp.addEventListener("click", showCelciusTemp);
-  fahrenheitTemp.addEventListener("click", showFahrenheitTemp);
 }
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#temperature-fahrenheit");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+let celciusLink = document.querySelector("#temperature-celcius");
+celciusLink.addEventListener("click", showCelciusTemp);
+
 
 function showCity(event) {
   event.preventDefault();
