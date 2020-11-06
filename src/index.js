@@ -10,6 +10,7 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${a
 
 axios.get(apiUrl).then(showTemperature);
 
+
 function currentDate(date) {
   let days = [
     "Sunday",
@@ -19,31 +20,11 @@ function currentDate(date) {
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday"
   ];
   let day = days[now.getDay()];
-  let dayPlusTwo = days[now.getDay()+2]
-  let dayPlusTwoElement = document.querySelector("#date-plus-two")
-  let dayPlusThree = days[now.getDay()+3]
-  let dayPlusThreeElement = document.querySelector("#date-plus-three")
-  let dayPlusFour = days[now.getDay()+4]
-  let dayPlusFourElement = document.querySelector("#date-plus-four")
-  let dayPlusFive = days[now.getDay()+5]
-  let dayPlusFiveElement = document.querySelector("#date-plus-five")
   let hour = ("0" + now.getHours()).slice(-2);
   let minutes = ("0" + now.getMinutes()).slice(-2);
 
-  dayPlusTwoElement.innerHTML = `${dayPlusTwo}`
-  dayPlusThreeElement.innerHTML = `${dayPlusThree}`
-  dayPlusFourElement.innerHTML = `${dayPlusFour}`
-  dayPlusFiveElement.innerHTML = `${dayPlusFive}`
   return `${day}, ${hour}:${minutes}`;
 }
 

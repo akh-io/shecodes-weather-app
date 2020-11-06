@@ -36,6 +36,12 @@ ul {
   font-size: 150px;
 }
 
+#footer {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
 .title {
   font-size: 38px;
   margin-bottom: 50px;
@@ -55,10 +61,4 @@ ul {
 
 .title .active:hover {
   text-decoration: none;
-}
-
-#footer {
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 60px;
 }
