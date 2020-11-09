@@ -60,8 +60,8 @@ function showTemperature(response) {
   let maxTempElement = document.querySelector("#max-temperature");
   let humidity = Math.round(response.data.main.humidity);
   let humidityElement = document.querySelector("#humidity");
-  let feelTemp = Math.round(response.data.main.feels_like);
-  let feelTempElement = document.querySelector("#feels-like");
+  let wind = Math.round(response.data.wind.speed);
+  let windElement = document.querySelector("#wind");
   let iconElelment = document.querySelector("#icon");
   
  
@@ -70,7 +70,7 @@ function showTemperature(response) {
   minTempElement.innerHTML = `Lowest: ${minTemp}°C`;
   maxTempElement.innerHTML = `Highest: ${maxTemp}°C`;
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
-  feelTempElement.innerHTML = `Feels like: ${feelTemp}°C`;
+  windElement.innerHTML = `Wind: ${wind}km/hr`;
   iconElelment.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`) 
   iconElelment.setAttribute("alt", response.data.weather[0].description)
 }
