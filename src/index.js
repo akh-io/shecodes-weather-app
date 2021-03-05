@@ -11,7 +11,8 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Berlin&appid=${a
 axios.get(apiUrl).then(showTemperature);
 
 
-function currentDate(date) {
+function formattedDate(timestamp) {
+  let date = new Date(timestamp)
   let days = [
     "Sunday",
     "Monday",
@@ -21,9 +22,9 @@ function currentDate(date) {
     "Friday",
     "Saturday",
   ];
-  let day = days[now.getDay()];
-  let hour = ("0" + now.getHours()).slice(-2);
-  let minutes = ("0" + now.getMinutes()).slice(-2);
+  let day = days[date.getDay()];
+  let hour = ("0" + date.getHours()).slice(-2);
+  let minutes = ("0" + date.getMinutes()).slice(-2);
 
   return `${day}, ${hour}:${minutes}`;
 }
@@ -63,7 +64,7 @@ function showTemperature(response) {
   let wind = Math.round(response.data.wind.speed);
   let windElement = document.querySelector("#wind");
   let iconElelment = document.querySelector("#icon");
-  
+  let dateElement = document.querySelector("#update-time");
  
   temperatureElement.innerHTML = temperature;
   descriptionElement.innerHTML = `${description}`;
@@ -71,8 +72,9 @@ function showTemperature(response) {
   maxTempElement.innerHTML = `Highest: ${maxTemp}°C`;
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
   windElement.innerHTML = `Wind: ${wind}km/hr`;
-  iconElelment.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`) 
-  iconElelment.setAttribute("alt", response.data.weather[0].description)
+  iconElelment.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`); 
+  iconElelment.setAttribute("alt", response.data.weather[0].description);
+  dateElement.innerHTML = formattedDate(response.data.dt * 1000);
 }
 
 let celsiusTemperature = null;
@@ -95,9 +97,6 @@ function showCity(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-let currentTime = document.querySelector("#current-time");
-let now = new Date();
-currentTime.innerHTML = currentDate(now);
 
 let searchCity = document.querySelector("form");
 searchCity.addEventListener("submit", showCity);
