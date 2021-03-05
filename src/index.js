@@ -26,7 +26,7 @@ function formattedDate(timestamp) {
   let hour = ("0" + date.getHours()).slice(-2);
   let minutes = ("0" + date.getMinutes()).slice(-2);
 
-  return `${day}, ${hour}:${minutes}`;
+  return `${day} ${hour}:${minutes}`;
 }
 
 
